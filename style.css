@@ -70,37 +70,51 @@ a:hover { text-decoration: underline; }
   backface-visibility: hidden;
 }
 
+ /* ---------- Tweak: push first image lower + slightly zoom ---------- */
 .hero-1 {
-  background-position: 50% 35%;    
-  background-size: 105%;           
+  /* default framing for larger screens */
+  background-position: 50% 40%;
+  background-size: 105%;
 }
 
-.hero-2 { background-position: 50% 50%; }
-.hero-3 { background-position: 50% 50%; }
- 
+/* More aggressive framing for phones */
 @media (max-width: 767px) {
   .hero-1 {
-    background-position: 50% 45% !important; 
-    background-size: 110% !important;         
+    background-position: 50% 60% !important; /* move focal point lower on small phones */
+    background-size: 110% !important;        /* small zoom so no black band appears */
   }
 
-  
+  /* Ensure the hero content is perfectly centered horizontally and moved lower vertically */
   .hero-content {
-    top: 60% !important;       
-    transform: translate(-50%, -40%) !important; 
-    padding-right: 1rem;
+    position: absolute !important;
+    left: 50% !important;                     /* important: center horizontally */
+    top: 62% !important;                      /* vertical anchor point on phone */
+    transform: translate(-50%, -50%) !important; /* center transform */
+    width: 90% !important;
+    max-width: 720px !important;
+    z-index: 3 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  
+  /* Make sure buttons stay centered and don't wrap awkwardly */
+  .hero-buttons {
+    display: flex !important;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* Nudge indicators up a little if needed */
   .hero-carousel .carousel-indicators {
-    bottom: 18px; 
+    bottom: 18px !important;
   }
-}
-
- 
-@media (max-width: 568px) {
-  .hero-carousel { height: 100svh; } 
-  .hero-bg { background-repeat: no-repeat; } 
 }
  
 .carousel-fade .carousel-item {
