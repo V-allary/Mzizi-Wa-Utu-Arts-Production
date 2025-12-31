@@ -17,12 +17,19 @@
 
     <link rel="stylesheet" href="style.css">
     <script>
+      document.addEventListener('DOMContentLoaded', function () {
         const heroCarousel = document.querySelector('#heroCarousel');
-        const carousel = new bootstrap.Carousel(heroCarousel, { 
-          interval: 15000,  
-          pause: false
-        });
-        </script>
+    
+        if (heroCarousel) {
+          new bootstrap.Carousel(heroCarousel, {
+            interval: 3000, 
+            pause: false,     
+            ride: 'carousel', 
+            wrap: true       
+          });
+        }
+      });
+    </script>
 </head>
 <body>
 
@@ -30,9 +37,8 @@
 <nav class="navbar navbar-expand-lg  navbar-transparent  fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between px-3 position-relative">
         <a class="navbar-brand fw-bold" href="#home">
-            <img src="mzizi_wa_utu_logo_150x150_transparent.png" height="55"  width="55" class="img-fluid" class="me-2"> 
+            <img src="mwuap.png" height="55"  width="55" class="img-fluid" class="me-2"> 
             <span class="navbar-center-text">
-              MZIZII ARTS
             </span>
         </a>
         <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#nav"
@@ -55,42 +61,63 @@
 
 <!-- HERO -->
 <section id="home" class="hero-carousel">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="hero-bg" style="background-image: url('this-is-the-kenya-national.jpg');"></div>
-        </div>
-  
-        <div class="carousel-item">
-          <div class="hero-bg" style="background-image: url('IMG_7760-scaled.jpg');"></div>
-        </div>
-  
-        <div class="carousel-item">
-          <div class="hero-bg" style="background-image: url('img-3.webp');"></div>
-        </div>
+
+  <div id="heroCarousel" class="carousel slide carousel-fade">
+
+    <!-- Slide indicators -->
+<div class="carousel-indicators">
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+          class="active" aria-current="true" aria-label="Slide 1"></button>
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+</div>
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="hero-bg hero-1"
+             style="background-image: url('Mzizii Wa Utu 1.jpeg');"></div>
       </div>
-  
-    
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-  
-      <!-- Hero text overlay -->
-      <div class="hero-content text-center">
-        <h1 data-aos="fade-up">MZIZII ARTS<br>PRODUCTION</h1>
-        <p class="lead" data-aos="fade-up" data-aos-delay="200">Home is Where Art is.</p>
-  
-        <div class="hero-buttons mt-4" data-aos="fade-up" data-aos-delay="300">
-    <a href="#services" class="btn-solid mx-2">Explore</a>
-          <a href="#about" class="btn-solid mx-2">About Us</a>
-        </div>
+
+      <div class="carousel-item">
+        <div class="hero-bg hero-2"
+             style="background-image: url('this-is-the-kenya-national.jpg');"></div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="hero-bg hero-3"
+             style="background-image: url('img-3.webp');"></div>
+      </div>
+
     </div>
-  </section>
+
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+    <!-- Hero text overlay -->
+    <div class="hero-content text-center">
+      <p class="lead fw-bold" data-aos="fade-up" data-aos-delay="200">
+        Home is Where Art is.
+      </p>
+
+      <div class="hero-buttons mt-4" data-aos="fade-up" data-aos-delay="300">
+        <a href="#services" class="btn-solid mx-2">Explore</a>
+        <a href="#about" class="btn-solid mx-2">About Us</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+ 
 <!-- ABOUT -->
 <section id="about" class="py-5">
     <div class="container">
@@ -161,7 +188,7 @@ Join us and be part of a community that believes in creativity, culture, and mea
   </div>
 
   <div class="col-md-6 text-center" data-aos="fade-left">
-    <img src="e55cd17d-7b42-4c53-8c2f-5fc0c28566a9.JPG" class="img-fluid rounded" alt="Join Us">
+    <img src="Mzizii Wa Utu 1.jpeg" class="img-fluid rounded" alt="Join Us">
   </div>
         </div>
     </div>
@@ -335,7 +362,7 @@ Join us and be part of a community that believes in creativity, culture, and mea
     <div class="container">
       <p class="mb-1">
         © 2025 Mzizii Arts Production | All Rights Reserved | Designed &amp; Developed by
-        <a href="https://v-allary.github.io/Miss-Vallary/"
+        <a href="https://v-allary.github.io/vmdigital/"
            target="_blank"
            rel="noopener noreferrer"
            class="developer-link">
