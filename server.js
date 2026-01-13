@@ -47,7 +47,7 @@ app.post("/submit-form", async (req, res) => {
       `,
     });
 
-    res.status(200).json("Message sent successfully!");
+    res.status(200).send("Message sent successfully!");
   } catch (error) {
     console.error("Email send error:", error);
     res.status(500).send("Email failed to send.");
