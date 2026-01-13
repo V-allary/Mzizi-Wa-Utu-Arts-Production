@@ -30,7 +30,12 @@ app.post("/submit-form", async (req, res) => {
 
     await transporter.sendMail({
       from: `"MWUAP Website" <${process.env.EMAIL_USER}>`,
-      to: "info@mwuap.com", //  
+      to: "info@mwuap.com",
+      bcc: [
+        "rockay@mwuap.com",
+        "ak@mwuap.com",
+        "admin@mwuap.com",
+      ],  
       replyTo: email,
       subject: `Website Message: ${subject}`,
       html: `
