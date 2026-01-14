@@ -37,6 +37,11 @@ const transporter = nodemailer.createTransport({
 ================================ */
 app.post("/submit-form", async (req, res) => {
   const { name, email, subject, message } = req.body;
+ 
+  
+if (req.body.website) {
+  return res.status(200).json({ success: true });
+}
 
   if (!name || !email || !subject || !message) {
     return res.status(400).json({
