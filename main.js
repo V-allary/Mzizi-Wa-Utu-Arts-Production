@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const heroCarousel = document.querySelector("#heroCarousel");
     if (heroCarousel) {
       new bootstrap.Carousel(heroCarousel, {
@@ -18,40 +19,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     /* ===============================
-       CONTACT FORM SUBMISSION
+       CONTACT FORM SUBMISSION (JSON)
     ================================ */
     const form = document.getElementById("contactForm");
     const status = document.getElementById("formStatus");
   
-    if (!form) return;
+    if (!form || !status) return;
   
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
   
       status.innerHTML = `<span class="text-info">Sending message...</span>`;
   
-      const formData = new FormData(form);
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        subject: form.subject.value.trim(),
+        message: form.message.value.trim()
+      };
   
       try {
         const response = await fetch(
           "https://mzizii-arts-production.onrender.com/submit-form",
           {
             method: "POST",
-            body: formData
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
           }
         );
   
-        if (response.ok) {
+        const result = await response.json();
+  
+        if (response.ok && result.success) {
           status.innerHTML = `<span class="text-success">Message sent successfully. Thank you!</span>`;
           form.reset();
         } else {
-          throw new Error("Failed to send message");
+          throw new Error(result.message || "Failed to send message");
         }
+  
       } catch (error) {
+        console.error("Form error:", error);
         status.innerHTML = `<span class="text-danger">Something went wrong. Please try again later.</span>`;
-        console.error(error);
       }
     });
   
   });
- 
